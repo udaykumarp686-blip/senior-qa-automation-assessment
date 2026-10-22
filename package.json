@@ -1,0 +1,24 @@
+{
+  "name": "senior-qa-automation-assessment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright TypeScript employee lifecycle assessment scaffold with CI and k6",
+  "scripts": {
+    "demo": "tsx demo/server.ts",
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:api": "playwright test tests/api",
+    "test:ui": "playwright test tests/ui",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.30",
+    "express": "^5.1.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
