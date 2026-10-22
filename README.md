@@ -26,7 +26,7 @@ A self-contained assessment scaffold demonstrating a TypeScript + Playwright aut
 ## Setup
 
 ```bash
-npm install
+npm ci
 npx playwright install --with-deps chromium
 cp .env.example .env
 ```
@@ -69,7 +69,7 @@ These are local demo-only credentials. Never use these credentials for a real en
 
 ## Environment configuration
 
-Set `BASE_URL`, `API_BASE_URL`, `TEST_USERNAME`, `TEST_PASSWORD`, `VIEWER_USERNAME`, and `VIEWER_PASSWORD`. For an external app, set `USE_EXTERNAL_APP=true` and update page objects, endpoint paths, payloads, and authentication to match the target. Store secrets in GitHub Actions Secrets; do not commit real credentials.
+The framework loads `.env` automatically. Settings include `BASE_URL`, `API_BASE_URL`, `TEST_USERNAME`, `TEST_PASSWORD`, `VIEWER_USERNAME`, and `VIEWER_PASSWORD`. `CI=true` enables retries and CI worker settings; `CI=false` keeps local execution retry-free. For an external app, set `USE_EXTERNAL_APP=true` and update page objects, endpoint paths, payloads, and authentication to match the target. Store secrets in GitHub Actions Secrets; do not commit real credentials.
 
 ## Tags
 

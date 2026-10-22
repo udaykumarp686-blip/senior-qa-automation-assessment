@@ -1,13 +1,17 @@
+import dotenv from 'dotenv';
 import { defineConfig, devices } from '@playwright/test';
 
+dotenv.config();
+
 const baseURL = process.env.BASE_URL ?? 'http://127.0.0.1:3000';
+const isCI = process.env.CI === 'true';
 
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  forbidOnly: Boolean(process.env.CI),
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 2 : undefined,
+  forbidOnly: isCI,
+  retries: isCI ? 2 : 0,
+  workers: isCI ? 2 : undefined,
   timeout: 30_000,
   expect: { timeout: 7_000 },
   reporter: [

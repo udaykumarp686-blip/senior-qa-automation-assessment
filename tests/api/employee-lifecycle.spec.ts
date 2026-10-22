@@ -31,3 +31,11 @@ test('@api @regression unauthenticated users cannot list employees', async ({ re
   const response = await request.get(`${process.env.API_BASE_URL ?? 'http://127.0.0.1:3000/api'}/employees`);
   expect(response.status()).toBe(401);
 });
+
+test('@api @regression viewer cannot create employees', async ({ request }) => {
+  const api = new ApiClient(request);
+  const token = await api.login(process.env.VIEWER_USERNAME, process.env.VIEWER_PASSWORD);
+  const response = await api.createEmployee(token, uniqueEmployee());
+
+  expect(response.status()).toBe(403);
+});
